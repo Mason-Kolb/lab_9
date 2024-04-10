@@ -9,8 +9,16 @@ def encode(num):
     encoded_str = ''.join(map(str, encoded_digits))
     return encoded_str
 
+def decode(passencoded):
+    decoder = {"2":"9","1":"8","0":"7","9":"6","8":"5","7":"4","6":"3","5":"2","4":"1","3":"0"}
+    passdecode = ""
+    for num in passencoded:
+        passdecode += decoder[num]
+    return passdecode
+
 
 if __name__ == '__main__':
+    passcode = ""
     while True:
         print("Menu")
         print("-------------")
@@ -21,8 +29,8 @@ if __name__ == '__main__':
         choice = input("Please enter an option: ")
         if choice == "1":
             num = input("Please enter your password to encode: ")
-            encode(num)
+            passcode = encode(num)
         if choice == "2":
-            pass
+            print("The encoded password is ",passcode," and the original password is ",decode(passcode),".",sep="")
         elif choice == "3":
             quit()
